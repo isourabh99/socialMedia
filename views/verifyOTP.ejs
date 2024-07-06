@@ -4,11 +4,14 @@
 
 <main class="text-white bg-neutral-800 min-h-screen w-full flex items-center justify-center ">
 
-    <form action="/user/verifyOTP<%=id%>" method="post" class=" h-[50vh] w-[50vw] p-10 ">
+    <form action="/user/verifyOTP/<%=id%>" method="post" class=" h-[50vh] w-[50vw] p-10 ">
         <h1 class="mb-10 text-4xl text-neutral-400">Verfify?</h1>
         <input type="number" placeholder="Enter OTP"
             class="w-full h-10 px-3 bg-neutral-600 border-black rounded text-xl placeholder:text-neutral-800 mb-4"
             name="otp">
+        <input type="text" placeholder="Enter new Password"
+            class="w-full h-10 px-3 bg-neutral-600 border-black rounded text-xl placeholder:text-neutral-800 mb-4"
+            name="password">
         <button class="bg-neutral-900  hover:bg-neutral-950 px-6 py-2 rounded text-xl">Send OTP</button>
     </form>
 

@@ -76,6 +76,25 @@ router.post("/sendMail", async (req, res, next) => {
 
 })
 
+router.post("/verifyOTP/:id",async(req,res,next)=>{
+ try {
+   const user = await userModel.findById(req.params.id)
+   if (!user) return res.send("no user found")
+   if (user.otp != req.body.otp) {
+     user.otp = 0
+     await user.save()
+     return res.send(`Invalid OTP`)
+    
+   }
+   user.otp = 0
+   await user.setPassword(req.body.password)
+   await user.save()
+   res.redirect("/login")
+ } catch (error) {
+  console.log(error);
+  res.send(error.message)
+ }
+})
 
 
 
