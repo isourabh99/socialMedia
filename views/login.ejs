@@ -1,0 +1,21 @@
+<%-include("partials/header")%>
+<%-include("partials/nav")%>
+<%-include("partials/logo")%>
+
+<main class="text-white bg-neutral-800 min-h-screen flex items-center justify-center ">
+    <div class="min-h-[40vh] w-[40vw] bg-neutral-700 p-10 rounded-md">
+        <h1 class="mb-10 text-4xl text-neutral-400">Login</h1>
+        <form action="/user/login" method="post">
+            <input type="text" placeholder="Enter username"
+                class="w-full h-10 px-3 py-6 bg-neutral-600 border-black rounded text-xl placeholder:text-neutral-800 mb-4" name="username">
+            <input type="password" placeholder="********"
+                class="w-full h-10 px-3 py-6 bg-neutral-600 border-black rounded text-xl placeholder:text-neutral-800 mb-4" name="password">
+            <button class="bg-neutral-800  hover:bg-neutral-900 px-6 py-2 rounded text-xl">Login</button>
+            <a href="/forget" class="block mt-6 text-neutral-400 hover:text-neutral-900">Forgot Password ?</a>
+            <p class="mt-2 text-neutral-400">Don't have an account ? click to <a href="/signup"
+                    class="hover:text-neutral-400 text-xl text-neutral-950">Register</a></p>
+        </form>
+    </div>
+</main>
+
+<%-include("partials/footer")%>

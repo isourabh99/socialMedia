@@ -1,0 +1,16 @@
+<%-include("partials/header")%>
+<%-include("partials/nav")%>
+<%-include("partials/logo")%>
+<main class="text-white bg-neutral-800 min-h-screen pl-[15vw] py-20">
+
+  <div class="border border-neutral-700  border-y-0 w-3/4 min-h-[85vh] px-[2vw] py-[5vh]">
+      <div class="h-[10vh] w-[10vh] bg-neutral-600 rounded-full mb-6 overflow-hidden">
+        <img src="https://avatar.iran.liara.run/public/1" alt="" class="object-center">
+      </div>
+      <h1 class="text-white text-3xl inline">Hye..👋 <%=user.username%></h1>
+      <h1><%=user.email%></h1>
+    <a href="/user/logout" class="ml-[40vw] text-red-700 "><i class="ri-logout-box-r-line "></i>Logout</a>
+  </div>
+
+</main>
+<%-include("partials/footer")%>

@@ -1,0 +1,26 @@
+<%-include("partials/header")%>
+<%-include("partials/nav")%>
+<%-include("partials/logo")%>
+
+<main class="text-white bg-neutral-800 min-h-screen flex items-center justify-center ">
+    <div class="min-h-[40vh] w-[40vw] bg-neutral-700 p-10 rounded-md">
+        <form action="/user/signup" method="post">
+            <h1 class="mb-10 text-4xl text-neutral-400">Sign Up</h1>
+            <input type="text" placeholder="Enter username"
+                class="w-full h-10 px-3 bg-neutral-600 border-black rounded text-xl placeholder:text-neutral-800 mb-4" name="username">
+
+            <input type="number" placeholder="Enter mobile number"
+                class="w-full h-10 px-3 bg-neutral-600 border-black rounded text-xl placeholder:text-neutral-800 mb-4" name="mobilenum">
+                
+            <input type="email" placeholder="Enter email ( example@ex.com)"
+                class="w-full h-10 px-3 bg-neutral-600 border-black rounded text-xl placeholder:text-neutral-800 mb-4"name="email">
+
+            <input type="password" placeholder="********"
+                class="w-full h-10 px-3 bg-neutral-600 border-black rounded text-xl placeholder:text-neutral-800 mb-4"name="password">
+
+            <button class="bg-neutral-800  hover:bg-neutral-900 px-6 py-2 rounded text-xl">Sign Up</button>
+        </form>
+        
+    </div>
+</main>
+<%-include("partials/footer")%>
