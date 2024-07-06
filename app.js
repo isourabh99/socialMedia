@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // session set before setting the routes for Routers
 app.use(session({
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
   secret: process.env.SESSION_SECRET
 }))
 app.use(passport.initialize())

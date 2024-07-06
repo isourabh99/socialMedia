@@ -1,8 +1,6 @@
 const nodemailer = require("nodemailer")
 
-
-
-const sendMail = async (req, res, user) => {
+module.exports.sendMail = async (req, res, user) => {
     const OTP = Math.floor(Math.random() * 9000)
     const transporter = nodemailer.createTransport({
         service: "Gmail",
@@ -14,22 +12,21 @@ const sendMail = async (req, res, user) => {
         },
     });
 
-    const info = await transporter.sendMail({
+    const info = {
         from: '"Social 👻" <mrsourabh05@gmail.com>', // sender address
         to: req.body.email, // list of receivers
         subject: "Hello ✔", // Subject line
         text: "Hello world?", // plain text body
         html: `Your one time password to reset password is <h1>${OTP}</h1>`, // html body
-    });
+    };
 
-    transporter.sendMail(info, (err, info) => {
+    transporter.sendMail(info, async(err, info) => {
         if (err) return res.send(err)
-        else{
-            console.log(info);
-            console.log(user);
+            // console.log(info);
+            // console.log(user);
             user.otp=OTP
             await user.save()
-            return res.redirect("/verfifyOTP")
-        }
+            return res.redirect(`/verifyOTP/${user._id}`)
+        
     })
 }

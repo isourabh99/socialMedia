@@ -3,12 +3,18 @@ var router = express.Router();
 const userModel = require('../models/user.schema');
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy
-const {isLoggedIn} = require("../middleware/auth")
+const {
+  isLoggedIn
+} = require("../middleware/auth")
+const {
+  sendMail
+} = require("../utils/sendMail")
 
 passport.use(new LocalStrategy(userModel.authenticate()))
 
 router.post("/signup", async (req, res, next) => {
   try {
+
     const {
       username,
       password,
@@ -22,7 +28,6 @@ router.post("/signup", async (req, res, next) => {
     }
     const encryptedData = password
     const data = await userModel.register(nonChangableData, encryptedData)
-    // console.log(data);
     res.redirect("/user/profile")
   } catch (error) {
     console.log(error.message);
@@ -36,17 +41,17 @@ router.post("/login", passport.authenticate("local", {
 }), (req, res, next) => {})
 
 //  GET profile page. ("aftere login")
-router.get('/profile',isLoggedIn,  function (req, res, next) {
+router.get('/profile', isLoggedIn, function (req, res, next) {
 
- try {
-   res.render("profile", {
-     title: "Profile",
-     user: req.user
-   });
+  try {
+    res.render("profile", {
+      title: "Profile",
+      user: req.user
+    });
 
- } catch (error) {
-  console.log(error.message);
- }
+  } catch (error) {
+    console.log(error.message);
+  }
 });
 
 // Get route for logout user 
@@ -57,10 +62,21 @@ router.get("/logout", isLoggedIn, (req, res, next) => {
 })
 
 // Post route to send mail for forget password
-router.post("/sendMail", (req, res, next) => {
+router.post("/sendMail", async (req, res, next) => {
+  try {
+    const user = await userModel.findOne({
+      email: req.body.email
+    })
+    if (!user) return res.send(`No user found with this email ${req.body.email}`)
+    await sendMail(req, res, user)
+  } catch (error) {
+    console.log(error)
+    res.send(error.message)
+  }
 
- 
 })
+
+
 
 
 module.exports = router;

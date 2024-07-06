@@ -45,12 +45,25 @@ router.get('/login', function (req, res, next) {
 
   /* GET forgot page. */
   router.get('/forget', function (req, res, next) {
-    res.render('forget', {
-      title: 'Forget Password',
-      user: req.user
-    });
-
+   try {
+     res.render('forget', {
+       title: 'Forget Password',
+       user: req.user
+     });
+   } catch (error) {
+    res.send(error.message)
+   }
   });
 });
+
+
+// Get verifyOTP page
+router.get("/verifyOTP/:id",async(req,res,next)=>{
+  res.render("verifyOTP",{
+    title:"Verify OTP",
+    user:req.user,
+    id:req.params.id
+  })
+})
 
 module.exports = router;
