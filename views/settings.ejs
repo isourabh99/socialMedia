@@ -1,0 +1,41 @@
+<%-include("partials/header")%>
+<%-include("partials/nav")%>
+<%-include("partials/logo")%>
+
+<main class="text-white bg-neutral-800 min-h-screen flex items-center justify-center ">
+    <div class="min-h-[90vh] w-[70vw] bg-neutral-700 p-10 rounded-md">
+        <h1 class="mb-10 text-4xl text-neutral-400 text-center">Settings</h1>
+        <div>
+            <img class="avatarimage rounded-full w-[10vmax] h-[10vmax]  object-cover" src="<%= user.avatar.url%>"
+                alt="No image Found">
+
+            <form method="post" class="avatarform hidden" action="/user/avatar/<%= user._id%>"
+                enctype="multipart/form-data">
+                <input class="avatarinput" type="file" name="avatar">
+            </form>
+
+        </div>
+        <h1 class=" mb-10 text-white text-2xl">hello <%= user.username%> 👋</h1>
+        <p class="mt-3"><%= user.email%></p>
+
+
+    </div>
+
+
+
+</main>
+
+
+<script>
+    const avatarimage = document.querySelector('.avatarimage');
+    const avatarinput = document.querySelector('.avatarinput');
+    const avatarform = document.querySelector('.avatarform');
+    avatarimage.addEventListener("click", () => {
+        avatarinput.click()
+    })
+    avatarinput.addEventListener("change",()=>{
+        avatarform.submit()
+    })
+</script>
+
+<%-include("partials/footer")%>

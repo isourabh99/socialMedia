@@ -66,4 +66,6 @@ router.get("/verifyOTP/:id",async(req,res,next)=>{
   })
 })
 
+// 
+
 module.exports = router;

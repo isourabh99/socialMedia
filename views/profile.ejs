@@ -3,13 +3,20 @@
 <%-include("partials/logo")%>
 <main class="text-white bg-neutral-800 min-h-screen pl-[15vw] py-20">
 
-  <div class="border border-neutral-700  border-y-0 w-3/4 min-h-[85vh] px-[2vw] py-[5vh]">
-      <div class="h-[10vh] w-[10vh] bg-neutral-600 rounded-full mb-6 overflow-hidden">
-        <img src="https://avatar.iran.liara.run/public/1" alt="" class="object-center">
-      </div>
-      <h1 class="text-white text-3xl inline">Hye..👋 <%=user.username%></h1>
-      <h1><%=user.email%></h1>
-    <a href="/user/logout" class="ml-[40vw] text-red-700 "><i class="ri-logout-box-r-line "></i>Logout</a>
+  <div class="border border-neutral-700  border-y-0 w-full min-h-[85vh] px-[2vw] py-[5vh] ">
+
+    <div class="h-[12vh] w-[12vh] bg-neutral-600 rounded-full mb-6 overflow-hidden">
+      <img src="<%=user.avatar?.url%>" alt="" class="object-center">
+    </div>
+
+    <div class="w-[30vw]">
+      <h1 class="text-white text-2xl">Hye..👋 <span class="text-neutral-400"><%=user.username%></span></h1>
+      <h1>Bio placeholder </h1>
+      <a href="/user/settings" class="mt-6 block text-4xl"><i class="ri-settings-3-line"></i> </a>
+    </div>
+
+
+
   </div>
 
 </main>
